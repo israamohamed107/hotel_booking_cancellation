@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Hotel Booking Cancellation</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="/static/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+
+	<div class="bg-contact3" style="background-image: url('/static/images/bg-01.jpg');">
+		<div class="container-contact3">
+			<div class="wrap-contact3">
+
+
+				<form class="contact3-form validate-form" action="/predict" method="GET">
+					<span class="contact3-form-title">
+						Predicting Hotel Booking Cancellation
+					</span>
+					
+					<div class="wrap-input3 validate-input" >
+						<input class="input3" type="number" name="lead_time" value="lead_time" required>
+						<span class="focus-input3"> Lead Time:</span>
+					</div>
+
+
+					<div class="wrap-input3 validate-input" >
+						<input class="input3" type="number" name="arrival_date_week_number" value="arrival_date_week_number" req>
+						<span class="focus-input3">Arrival Week Number:</span>
+					</div>
+
+					<div class="wrap-input3 validate-input"  >
+						<input class="input3" type="number" name="arrival_date_day_of_month" value="arrival_date_day_of_month" min=1 max=31 required>
+						<span class="focus-input3">Arrival Day Of Month:</span>
+					</div>
+
+					<div class="wrap-input3 validate-input" >
+						<input class="input3" type="number" name="stays_in_week_nights" value="stays_in_week_nights" required >
+						<span class="focus-input3">Stay Days On Week Nights:</span>
+					</div>
+
+				
+					<div class="wrap-input3 validate-input" >
+						<input class="input3" type="number" name="previous_cancellations" value="previous_cancellations" required>
+						<span class="focus-input3">Number Of Previous Cancellations:</span>
+					</div>
+
+				
+			
+
+					<div class="wrap-input3 validate-input" >
+						<input class="input3" type="number" step="any" name="adr" value="adr" required>
+						<span class="focus-input3">Average Price per Day:</span>
+					</div>
+										
+					<div class="wrap-input3 validate-input" >
+						<input class="input3" type="number" name="required_car_parking_spaces" value="required_car_parking_spaces" required >
+						<span class="focus-input3">Required Car Parking Spaces:</span>
+					</div>
+					
+					<div class="wrap-input3 validate-input" >
+						<input class="input3" type="number" name="total_of_special_requests" value="total_of_special_requests" required>
+						<span class="focus-input3">Number Of Total Special Requests:</span>
+					</div>
+
+					<div class="wrap-input3 validate-input" >
+						<input class="input3" type="number" name="reservation_status_day" value="reservation_status_day" required>
+						<span class="focus-input3"> Reservation Day:</span>
+					</div>
+
+					<div class="wrap-input3 validate-input" >
+						<input class="input3" type="number" name="reservation_status_month" value="reservation_status_month"required>
+						<span class="focus-input3"> Reservation Month:</span>
+					</div>
+					
+					
+					<div class="wrap-input3 validate-input" >
+						<span class="focus-input3"> Market Segment:</span>
+						<br>
+						<select name="market segment" >
+							<option value="Online TA">Online TA</option>
+							<option value="Offline TA/TO">Offline TA/TO</option>
+							<option value="Groups">Groups</option>
+							<option value="Direct">Direct</option>
+							<option value="Corporate">Corporate</option>
+							<option value="Complementary">Complementary</option>
+							<option value="Aviation">Aviation</option>
+						
+						</select>
+						
+					</div>
+
+				
+
+
+					<div class="wrap-input3 validate-input" >
+						<span class="focus-input3"> Deposit Type:</span>
+						<br>
+						<select name="deposit_type" >
+							<option value="No Deposit">No Deposit</option>
+							<option value="Refundable">Refundable</option>
+							<option value="Non Refund">Non Refund</option>
+	
+						</select>
+					</div>
+
+				
+					<div class="container-contact3-form-btn">
+						<button class="contact3-form-btn" >
+							predict
+						</button>
+					</div>
+
+					<div>
+						
+						
+						
+					</div>
+				</form>
+			
+				<br>
+				<hr>
+
+					<!-- {% if pred %}
+						<p >This Guest<span style='color: #a4f773;'> will</span> cancel the reservation</p>
+					{%else%}
+						<p >This Guest<span style='color: #a4f773;'> will not</span> cancel the reservation</p>
+					{% endif %} -->
+
+						<p>{{ pred }}</p>
+						
+				</div>
+					
+		</div>
+
+			
+	</div>
+
+
+	<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+	<script src="/static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/static/vendor/bootstrap/js/popper.js"></script>
+	<script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/static/vendor/select2/select2.min.js"></script>
+	<script>
+		$(".selection-2").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="../static/js/main.js"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+
+</body>
+</html>
